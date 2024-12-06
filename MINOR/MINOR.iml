@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="AdditionalModuleElements">
+    <content url="file://$MODULE_DIR$" dumb="true">
+      <excludeFolder url="file://$MODULE_DIR$/data/test" />
+      <excludeFolder url="file://$MODULE_DIR$/log" />
+      <excludeFolder url="file://$MODULE_DIR$/result/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/result/eL" />
+      <excludeFolder url="file://$MODULE_DIR$/result/limit" />
+      <excludeFolder url="file://$MODULE_DIR$/result/lr" />
+      <excludeFolder url="file://$MODULE_DIR$/result/p" />
+      <excludeFolder url="file://$MODULE_DIR$/result/summary" />
+      <excludeFolder url="file://$MODULE_DIR$/result/test" />
+      <excludeFolder url="file://$MODULE_DIR$/result/test/ILD" />
+      <excludeFolder url="file://$MODULE_DIR$/result/threshold" />
+      <excludeFolder url="file://$MODULE_DIR$/resultProcess/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/resultProcess/IMRresult/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/resultProcess/IMRresult/code/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/resultProcess/IMRresult/result" />
+    </content>
+  </component>
+</module>
