@@ -38,25 +38,25 @@ We used publicly available code sources for the deep leaning baselines:
   * result/: This directory stores all the result of experiments in this paper, and it can be reproduced according to the following "Experiments". 
   * src/com/MINOR/:
     * core/:
-      * AkaneHeuristic.java: Corresponding to the baseline Akane
-      * AR.java: Implementation of the AR model
-      * ARX.java: Implementation of the ARX model
+      * AkaneHeuristic.java: Corresponding to the baseline `Akane`
+      * AR.java: Implementation of the `AR` model
+      * ARX.java: Implementation of the `ARX` model
       * BaseCleaningModel.java: Parent class, provide some basic properties and methods
-      * IMR.java: Implementation of the IMR model
-      * IMRStream.java: Implementation of the IMR-stream model for online computing
-      * MINOR_B.java: Implementation of the MINOR-B model
+      * IMR.java: Implementation of the `IMR` model
+      * IMRStream.java: Implementation of the `IMR-stream` model for online computing
+      * MINOR_B.java: Implementation of the `MINOR-B` model
       * MINOR_base.java: Child class of MTSCModel, defined basic properties and methods for MINOR-B, MINOR-U and MINOR-O
-      * MINOR_BUni.java: Implementation of the MINOR-BUni model
-      * MINOR_O.java: Implementation of the MINOR-O model for online computing
-      * MINOR_U.java: Implementation of the MINOR-U model
-      * MTCSC.java:  Corresponding to the baseline MTCSC-C
-      * MTCSC_A.java:  Corresponding to the baseline MTCSC-A
-      * MTCSC_Uni.java:  Corresponding to the baseline MTCSC-Uni for application experiments
+      * MINOR_BUni.java: Implementation of the `MINOR-BUni` model
+      * MINOR_O.java: Implementation of the `MINOR-O` model for online computing
+      * MINOR_U.java: Implementation of the `MINOR-U` model
+      * MTCSC.java:  Corresponding to the baseline `MTCSC-C`
+      * MTCSC_A.java:  Corresponding to the baseline `MTCSC-A`
+      * MTCSC_Uni.java:  Corresponding to the baseline `MTCSC-Uni` for application experiments
       * MTSCModel.java: Child class of BaseCleaningModel, defined basic properties and methods for MINOR-B, MINOR-U, MINOR-O, VAR, VARX and VARX-stream
       * UTSCModel.java: Child class of BaseCleaningModel, defined basic properties and methods for AR, ARX, IMR, IMR-stream and MINOR-BUni
-      * VAR.java: Implementation of the VAR model
-      * VARX.java: Implementation of the VARX model
-      * VARXStream.java: Implementation of the VARX-stream model for online computing
+      * VAR.java: Implementation of the `VAR` model
+      * VARX.java: Implementation of the `VARX` model
+      * VARXStream.java: Implementation of the `VARX-stream` model for online computing
     * entity/: Defined the required classes
     * enums/: Defined the required enums
     * example/: Corresponding to the examples from example 2 to example 9
@@ -100,7 +100,7 @@ To reproduce the experimental results in this paper, just run a separate Java fi
   * Path/`ErrorPattern_ILD.java`, results in Result/ILD/summary/pattern/
 * Section V.C.5  Evaluation on Online Computing
   * Path/`OnlineComputing.java`, results in Result/online/
-* Section V.D Applications: The final classification and clustering experiments were completed using Python. First, you need to run the corresponding Java files below to generate repair results, and then copy the folder named `repaired` in `Data/app/` to MINOR_py/data/ (already created)
+* Section V.D Applications: The final classification and clustering experiments were completed using Python. First, you need to run the corresponding Java files below to generate repair results, and then copy the folder named `repaired` form Data/app/ to MINOR_py/data/ (already created)
   * java
     * Path/Application.java, repair results in Data/app/repaired/
   * python
