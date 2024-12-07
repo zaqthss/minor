@@ -36,7 +36,7 @@ We used publicly available code sources for the deep leaning baselines:
       * Classification/: This directory stores original datasets for classification experiments in Section V.D
       * Cluster/: This directory stores original datasets for cluster experiments in Section V.D
   * result/: This directory stores all the result of experiments in this paper, and it can be reproduced according to the following "Experiments". 
-  * src/com/MTCSC/:
+  * src/com/MINOR/:
     * core/:
       * AkaneHeuristic.java: Corresponding to the baseline Akane
       * AR.java: Implementation of the AR model
@@ -66,11 +66,11 @@ We used publicly available code sources for the deep leaning baselines:
 
 ## Experiments
 
-**Note: Before reproduce results, src/com/MTCSC/pre/RunAllInjection.java is required to be runed first to generate datasets with errors and labels.**
+**Note: Before reproduce results, src/com/MINOR/pre/RunAllInjection.java is required to be runed first to generate datasets with errors and labels.**
 
 To reproduce the experimental results in this paper, just run a separate Java file. The Java file corresponds to each experimental section as follows.
 
-**Path = MINOR/src/com/MTCSC/experiment/**
+**Path = MINOR/src/com/MINOR/experiment/**
 
 **Data = MINOR/data/**
 
