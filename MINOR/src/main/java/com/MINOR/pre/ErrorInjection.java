@@ -30,17 +30,6 @@ public class ErrorInjection {
     private long seed;
     private String outputFPath;
 
-    @Deprecated
-    public ErrorInjection(double _mu, double _sigma, double _lRate, int _eLength, int _eSections) {
-        mu = _mu;
-        sigma = _sigma;
-        lRate = _lRate;
-        eLength = _eLength;
-        eSections = _eSections;
-        seed = 1120203025;
-        dataNum = 0;
-    }
-
     /**
      * @param _data        raw data
      * @param _timestamps  timestamp list
@@ -120,12 +109,12 @@ public class ErrorInjection {
                 markedPointsCount = Math.max(1, (int) Math.floor(lRate * eLength));
                 markedIndices.add(start);
                 lbSet.add(start);
-            }
-            // 选择随机点进行标记，保证不重复，且数量满足需求
-            while (markedIndices.size() < markedPointsCount) {
-                int markIndex = start + random.nextInt(eLength);
-                markedIndices.add(markIndex);
-                lbSet.add(markIndex);
+                // 选择随机点进行标记，保证不重复，且数量满足需求
+                while (markedIndices.size() < markedPointsCount) {
+                    int markIndex = start + random.nextInt(eLength);
+                    markedIndices.add(markIndex);
+                    lbSet.add(markIndex);
+                }
             }
             int sign = random.nextInt(2) * 2 - 1;// 噪音的符号正负
             int type = random.nextInt(3);   // subtypes of INNOVATIONAL error
@@ -162,6 +151,15 @@ public class ErrorInjection {
                 }
             }
         }
+        if (eLength == 1){
+            // 对于spike errors, startPts就是所有脏值点
+            int markedPointsCount = Math.max(1, (int) Math.floor(lRate * eSections));
+            Collections.shuffle(startPts);
+            for (int i = 0; i < markedPointsCount; i++) {
+                lbSet.add(startPts.get(i));
+            }
+        }
+
 
         CSVFormat csvFormat = CSVFormat.DEFAULT.builder()
                 .setSkipHeaderRecord(false)

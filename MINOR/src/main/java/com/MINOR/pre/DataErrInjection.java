@@ -58,8 +58,8 @@ public class DataErrInjection {
         int el0 = Constants.el0;
         double[] ers = Constants.ers;
         int[] els = Constants.els;
-        // 改变错误率
         for (int seed = 0; seed < Constants.seeds.length; seed++) {
+            // 改变错误率
             for (int i = 0; i < 10; i++) {
                 // 有多少段错误
                 int sections = (int) Math.round((double) dataSize * ers[i] / el0);
@@ -77,6 +77,7 @@ public class DataErrInjection {
                     err2.run();
                 }
             }
+            // 改变长度
             for (int i = 0; i < 10; i++) {
                 int sections = (int) Math.round((double) dataSize * er0 / els[i]);
                 String outFP = Constants.dirtyPathPrefix + "\\" + name + "\\" + name + "_SHIFT_el_" + els[i] + '_' + seed + ".csv";
@@ -84,11 +85,6 @@ public class DataErrInjection {
                         lr0, els[i], sections, ErrorInjectorType.SHIFT,
                         Constants.seeds[seed], outFP);
                 err.run();
-//                String outFP2 = Constants.dirtyPathPrefix + "\\" + name + "\\" + name + "_INNO_el_" + els[i] + '_' + seed + ".csv";
-//                ErrorInjection err2 = new ErrorInjection(data, timestamps, mean, cov, cor, mu, sigma,
-//                        lr0, els[i], sections, ErrorInjectorType.INNOVATIONAL,
-//                        Constants.seeds[seed], outFP2);
-//                err2.run();
             }
         }
 
@@ -125,11 +121,6 @@ public class DataErrInjection {
                         lr0, el0, sections, ErrorInjectorType.SHIFT,
                         Constants.seeds[seed], outFP);
                 err.run();
-//                String outFP2 = Constants.dirtyPathPrefix + "\\" + name + "\\" + name + "_INNO_size_" + sizes[i] + '_' + seed + ".csv";
-//                ErrorInjection err2 = new ErrorInjection(subList, timestamps, mean, cov, cor, mu, sigma,
-//                        lr0, el0, sections, ErrorInjectorType.INNOVATIONAL,
-//                        Constants.seeds[seed], outFP2);
-//                err2.run();
             }
         }
     }

@@ -16,7 +16,7 @@ public class MINOR_U extends MINOR_base {
     protected double f;
     protected int fistLabel;
     protected double[] stList; // 每个标记点与前一个标记点的速度
-    protected double[] voList;    // 每个点观测值与前一个点修复值速度
+    protected double[] voList;    // 每个点观测值与前一个标记点速度
     protected DMatrixRMaj X;
     protected DMatrixRMaj[] XList;
 

@@ -32,8 +32,8 @@ public class CaseStudy_Table {
         int K = 3;              // order of Markov-chain for Akane Heuristic Auto
         double tolerance = 0.000001; // eliminate precision issues
         // results to export
-        String[] modelNames = {"Dirty", "MINOR-B", "MINOR-B-w/o CIC", "MINOR-B-w/o IC", "MINOR-B-Uni"
-                , "MINOR-U", "MINOR-U-w/o CIC", "MINOR-U-w/o IC"
+        String[] modelNames = {"Dirty", "MINOR-B", "MINOR-B-w/o CIC", "MINOR-B-w/o IC", "MINOR-B-Uni", "MINOR-B-w/o SC", "MINOR-B-w/o iter."
+                , "MINOR-U", "MINOR-U-w/o CIC", "MINOR-U-w/o IC", "MINOR-U-w/o SC", "MINOR-U-w/o iter."
                 , "VARX", "IMR", "MTCSC-C", "MTCSC-A", "Akane"};
         int modelCnt = modelNames.length;
         double[][] totalRMSE = new double[caseCnt][modelCnt];
@@ -139,6 +139,30 @@ public class CaseStudy_Table {
                     totalIterNum[i][modelID] += iterTmp;
                     System.out.println("[RESULT]" + modelNames[modelID] + ":" + new RepairResult(rmseTmp, timeTmp, iterTmp) + '\n');
                 }
+                // MINOR-B-w/o SC
+                modelID++;
+                if (flags[modelID]) {
+                    System.out.println("[INFO]running " + modelNames[modelID]);
+                    MyFileUtils.csv2MTS(ts, dim, dataFPath);
+                    MINOR_B_no_sc minorB = new MINOR_B_no_sc(ts, p0, threshold, maxIterations);
+                    result = minorB.run();
+                    totalRMSE[i][modelID] += result.getRmse();
+                    totalTime[i][modelID] += result.getTimeCost();
+                    totalIterNum[i][modelID] += result.getIterationNum();
+                    System.out.println("[RESULT]" + modelNames[modelID] + ":" + result + '\n');
+                }
+                // MINOR-B-w/o iter.
+                modelID++;
+                if (flags[modelID]) {
+                    System.out.println("[INFO]running " + modelNames[modelID]);
+                    MyFileUtils.csv2MTS(ts, dim, dataFPath);
+                    MINOR_B_no_iter minorB = new MINOR_B_no_iter(ts, p0, threshold);
+                    result = minorB.run();
+                    totalRMSE[i][modelID] += result.getRmse();
+                    totalTime[i][modelID] += result.getTimeCost();
+                    totalIterNum[i][modelID] += result.getIterationNum();
+                    System.out.println("[RESULT]" + modelNames[modelID] + ":" + result + '\n');
+                }
                 // MINOR-U
                 modelID++;
                 if (flags[modelID]) {
@@ -180,6 +204,30 @@ public class CaseStudy_Table {
                     }
                     totalRMSE[i][modelID] += result.getRmse();
                     totalTime[i][modelID] += result2.getTimeCost();
+                    totalIterNum[i][modelID] += result.getIterationNum();
+                    System.out.println("[RESULT]" + modelNames[modelID] + ":" + result + '\n');
+                }
+                // MINOR-U-w/o SC
+                modelID++;
+                if (flags[modelID]) {
+                    System.out.println("[INFO]running " + modelNames[modelID]);
+                    MyFileUtils.csv2MTS(ts, dim, dataFPath);
+                    MINOR_base minorU = new MINOR_base(ts, p0, threshold, maxIterations);
+                    result = minorU.run();
+                    totalRMSE[i][modelID] += result.getRmse();
+                    totalTime[i][modelID] += result.getTimeCost();
+                    totalIterNum[i][modelID] += result.getIterationNum();
+                    System.out.println("[RESULT]" + modelNames[modelID] + ":" + result + '\n');
+                }
+                // MINOR-U-w/o iter.
+                modelID++;
+                if (flags[modelID]) {
+                    System.out.println("[INFO]running " + modelNames[modelID]);
+                    MyFileUtils.csv2MTS(ts, dim, dataFPath);
+                    MINOR_U_no_iter minorU = new MINOR_U_no_iter(ts, p0, threshold);
+                    result = minorU.run();
+                    totalRMSE[i][modelID] += result.getRmse();
+                    totalTime[i][modelID] += result.getTimeCost();
                     totalIterNum[i][modelID] += result.getIterationNum();
                     System.out.println("[RESULT]" + modelNames[modelID] + ":" + result + '\n');
                 }

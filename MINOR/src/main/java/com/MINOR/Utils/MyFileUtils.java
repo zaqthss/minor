@@ -9,7 +9,9 @@ import org.ejml.data.DMatrixRMaj;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static com.MINOR.Utils.MyMathUtils.scoreResult;
 
@@ -563,6 +565,32 @@ public class MyFileUtils {
             pw.flush();
             pw.close();
             fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void exportMap(Map<Long, Double> ratioMap,
+                                 String headerLabel,
+                                 String filePath) {
+        // 对interval进行排序
+        List<Long> sortedIntervals = ratioMap.keySet().stream()
+                .sorted()
+                .collect(Collectors.toList());
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            // 写入表头（第一行）
+            writer.write(","); // 第一列留空
+            writer.write(sortedIntervals.stream()
+                    .map(String::valueOf)
+                    .collect(Collectors.joining(",")));
+            writer.newLine();
+            // 写入数据行（第二行）
+            writer.write(headerLabel);
+            for (Long interval : sortedIntervals) {
+                writer.write(",");
+                writer.write(String.format("%.4f", ratioMap.get(interval))); // 保留4位小数
+            }
+            writer.newLine();
         } catch (IOException e) {
             e.printStackTrace();
         }

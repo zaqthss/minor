@@ -1,5 +1,6 @@
 package com.MINOR.entity;
 
+import com.MINOR.Utils.MyMathUtils;
 import org.ejml.data.DMatrixRMaj;
 
 public class TimePoint {
@@ -162,5 +163,9 @@ public class TimePoint {
 
     public void setDetectedAsNormal(boolean detectedAsNormal) {
         this.detectedAsNormal = detectedAsNormal;
+    }
+
+    public boolean isDirty() {
+        return MyMathUtils.calL2Norm(this.valObs, this.valTruth, this.dimension) != 0;
     }
 }

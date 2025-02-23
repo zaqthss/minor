@@ -4,11 +4,10 @@ from sklearn.metrics import rand_score
 
 repeat_time = 3
 
-
 def mainKmeans(dataname, method):
     totalRI = 0.0
-    base_path_clean = '../data/clean/Cluster/';
-    train_file_clean = base_path_clean + dataname + '/' + dataname + '_TRAIN.csv';
+    base_path_clean = '../data/clean/Cluster/'
+    train_file_clean = base_path_clean + dataname + '/' + dataname + '_TRAIN.csv'
     # the first rows are labels
     df_train = pd.read_csv(train_file_clean, header=None)
     train_y = df_train.iloc[0, 1:]
@@ -16,7 +15,7 @@ def mainKmeans(dataname, method):
     if method == 'clean':
         df_train = pd.read_csv(train_file_clean, header=None)
         train_x = df_train.iloc[1:, 1:].transpose()
-        kmeans = KMeans(n_clusters=n_class)
+        kmeans = KMeans(n_clusters=n_class, random_state=3)
         kmeans.fit(train_x)
         labels = kmeans.labels_
         totalRI += rand_score(train_y, labels)
@@ -31,7 +30,7 @@ def mainKmeans(dataname, method):
             train_file = base_path + dataname + '/' + seed + '_' + dataname + '_' + method + '_TRAIN.csv'
             df_train = pd.read_csv(train_file, header=None)
             train_x = df_train.iloc[:, 1:].transpose()
-            kmeans = KMeans(n_clusters=n_class)
+            kmeans = KMeans(n_clusters=n_class, random_state=3)
             kmeans.fit(train_x)
             labels = kmeans.labels_
             totalRI += rand_score(train_y, labels)
@@ -40,7 +39,7 @@ def mainKmeans(dataname, method):
 
 
 if __name__ == '__main__':
-    data_names = ['DistalPhalanxTW', 'InsectEPGRegularTrain']
+    data_names = ['DistalPhalanxTW', 'EOGVerticalSignal']
     models = ['clean', 'Dirty', 'MINOR-B', 'MINOR-U', 'IMR', 'MTCSC', 'VARX', 'Akane']
     for data_name in data_names:
         print(data_name + ' Cluster RI: ')

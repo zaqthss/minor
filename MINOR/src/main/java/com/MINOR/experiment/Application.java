@@ -38,7 +38,7 @@ public class Application {
             run("Lightning2", "Classification", "TRAIN");
             run("Lightning2", "Classification", "TEST");
             run("DistalPhalanxTW", "Cluster", "TRAIN");
-            run("InsectEPGRegularTrain", "Cluster", "TRAIN");
+            run("EOGVerticalSignal", "Cluster", "TRAIN");
         } catch (Exception e) {
             e.printStackTrace();
         }

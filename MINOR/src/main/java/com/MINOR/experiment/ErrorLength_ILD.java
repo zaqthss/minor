@@ -126,6 +126,7 @@ public class ErrorLength_ILD {
                 if (flags[modelID]) {
                     System.out.println("[INFO]running " + modelNames[modelID]);
                     MyFileUtils.csv2MTS(ts, dim, dataFPath);
+                    S =(els[i] == 1)?0.3:0.06825;
                     MTCSC mtcsc_c = new MTCSC(ts, S, T, dim);
                     result = mtcsc_c.mainScreen();
                     totalRMSE[i][modelID] += result.getRmse();

@@ -36,7 +36,7 @@ We used publicly available code sources for the deep leaning baselines:
       * Classification/: This directory stores original datasets for classification experiments in Section V.D
       * Cluster/: This directory stores original datasets for cluster experiments in Section V.D
   * result/: This directory stores all the result of experiments in this paper, and it can be reproduced according to the following "Experiments". 
-  * src/com/MINOR/:
+  * src/main/java/com/MINOR/:
     * core/:
       * AkaneHeuristic.java: Corresponding to the baseline `Akane`
       * AR.java: Implementation of the `AR` model
@@ -45,10 +45,13 @@ We used publicly available code sources for the deep leaning baselines:
       * IMR.java: Implementation of the `IMR` model
       * IMRStream.java: Implementation of the `IMR-stream` model for online computing
       * MINOR_B.java: Implementation of the `MINOR-B` model
-      * MINOR_base.java: Child class of MTSCModel, defined basic properties and methods for MINOR-B, MINOR-U and MINOR-O
+      * MINOR_base.java: Child class of MTSCModel, defined basic properties and methods for MINOR-B, MINOR-U and MINOR-O, and implement `MINOR-U-w/o-SC` model
+      * MINOR_B_no_iter.java: Implementation of the `MINOR-B-w/o-iter.` model
+      * MINOR_B_np_sc.java: Implementation of the `MINOR-B-w/o-SC` model
       * MINOR_BUni.java: Implementation of the `MINOR-BUni` model
       * MINOR_O.java: Implementation of the `MINOR-O` model for online computing
       * MINOR_U.java: Implementation of the `MINOR-U` model
+      * MINOR_U_no_iter.java: Implementation of the `MINOR-U-w/o-iter.` model
       * MTCSC.java:  Corresponding to the baseline `MTCSC-C`
       * MTCSC_A.java:  Corresponding to the baseline `MTCSC-A`
       * MTCSC_Uni.java:  Corresponding to the baseline `MTCSC-Uni` for application experiments
@@ -66,11 +69,11 @@ We used publicly available code sources for the deep leaning baselines:
 
 ## Experiments
 
-**Note: Before reproduce results, src/com/MINOR/pre/RunAllInjection.java is required to be runed first to generate datasets with errors and labels.**
+**Note: Before reproduce results, src/main/java/com/MINOR/pre/RunAllInjection.java is required to be runed first to generate datasets with errors and labels.**
 
 To reproduce the experimental results in this paper, just run a separate Java file. The Java file corresponds to each experimental section as follows.
 
-**Path = MINOR/src/com/MINOR/experiment/**
+**Path = MINOR/src/main/java/com/MINOR/experiment/**
 
 **Data = MINOR/data/**
 
@@ -78,6 +81,7 @@ To reproduce the experimental results in this paper, just run a separate Java fi
 
 * Section V.B.1 Case Study
   * Path/`CaseStudy_Figure.java`, results in Result/CaseStudy/
+    * This figure has been removed in revision version.
   * Path/`CaseStudy_Table.java`, results in Result/CaseStudy/table/
 * Section V.B.2 Varying Order p
   * Path/`P_GPS.java`, results in Result/GPS/summary/p/
@@ -87,6 +91,8 @@ To reproduce the experimental results in this paper, just run a separate Java fi
   * Path/`MaxIteration_GPS.java`, results in Result/GPS/summary/maxiteration/
 * Section V.B.5 Varying Labeling Rate
   * Path/`LabelRate_GPS.java`, results in Result/GPS/summary/lr/
+* Section V.B.6 The effect of the interval between labeled and repaired points
+  * Path/`Interval_GPS.java, results in Result/GPS/summary/interval
 * Section V.C.1 Varying Error Rate e%
   * Path/`ErrorRate_ILD.java`, results in Result/ILD/summary/er/
   * Path/`ErrorRate_ECG.java`, results in Result/ECG/summary/er/
@@ -102,7 +108,7 @@ To reproduce the experimental results in this paper, just run a separate Java fi
   * Path/`OnlineComputing.java`, results in Result/online/
 * Section V.D Applications: The final classification and clustering experiments were completed using Python. First, you need to run the corresponding Java files below to generate repair results, and then copy the folder named `repaired` form Data/app/ to MINOR_py/data/ (already created)
   * java
-    * Path/Application.java, repair results in Data/app/repaired/
+    * Path/`Application.java`, repair results in Data/app/repaired/
   * python
     * MINOR_py/Application/classification.py:/ reproduce the results of classification experiments on `Car` and `Lightning2`
     * MINOR_py/Application/cluster.py:/ reproduce the results of cluster experiments on `DistalPhalanxTW` and `InsectEPGRegularTrain`

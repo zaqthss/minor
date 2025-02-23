@@ -23,7 +23,7 @@ public class Constants {
      * variable setting in experiment
      */
     public final static double[] ers = {0.05, 0.075, 0.10, 0.125, 0.15, 0.175, 0.20, 0.225, 0.25, 0.275};
-    public final static int[] els = {5, 10, 15, 20, 25, 30, 35, 40, 45, 50};
+    public final static int[] els = {1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50};
     public final static int[] sizesILD = {5000, 7500, 10000, 12500, 15000, 17500};
     public final static int[] sizesECG = {7000, 8000, 9000, 10000, 11000, 12000,};
     public final static int[] sizesOnline = {5000, 10000, 15000, 20000, 25000, 30000, 35000, 40000, 45000, 48018};
